@@ -33,5 +33,17 @@ function modifica(){
 btnMostrar.addEventListener("click", function (event){ // Agrega un escuchador de eventos
     event.preventDefault(); //No realiza lo que normalmente hace por defecto
     console.log("boton btnModificar presionado");
+
+    let element = document.createElement("li");
+    element.innerText = "Another item"; // crea otro elemento para la lista es un li con la frase Another item: <li>Another item</li>
+    element.classList.add("list-group-item");
+
+    let element2 = element.cloneNode(true); // Clona todo el contenido del elemento
+
+    // listas.item(0).before(element); // inserta el elemento antes de la lista
+    // listas.item(0).prepend(element2); // inserta el elemento inmediatamente despues del ul
+    listas.item(0).append(element); // inserta el elemento al final de la lista
+    listas.item(0).after(element2); // inserta el elemento despues de la lista
+
 }); 
     
