@@ -2,6 +2,9 @@ let btnMostrar = document.getElementById("btnMostrar");
 let encabezado1 = document.getElementById("encabezado1"); //
 let encabezado2 = document.getElementById("encabezado2");
 let listas = document.getElementsByTagName("ul"); // Utiliza la etiqueta del elemento
+let txtRFC = document.getElementById("txtRFC");
+let txtTelefono = document.getElementById("txtTelefono");
+let txtCURP = document.getElementById("txtCURP");
 
 let elementos = document.getElementsByClassName("list-group-item"); // Utiliza la clase asignada a la etiqueta
 
@@ -59,5 +62,37 @@ btnMostrar.addEventListener("click", function (event){ // Agrega un escuchador d
         
     listas.item(1).insertAdjacentHTML("beforeend", 
         `<li class="list-group-item">Before End item</li>`); 
-}); 
-    
+}); // cierre del evento mostrar
+
+// Se ejecuta cuando termina de cargar todos los elementos de la pagina
+window.addEventListener("load",function(event){
+    console.log("Se terminó de cargar la página")
+}); // cierre de load
+
+// Esta es la forma optimizada para hacerlo
+function txtToUpper(event){
+    event.target.value = event.target.value.trim().toUpperCase();
+} // cierre txtToUpper
+
+// blur -> cuando se sale del campo, cuando se pierde el foco
+txtRFC.addEventListener("blur", txtToUpper); // cierre txtRFC
+txtCURP.addEventListener("blur", txtToUpper); // cierre txtRFC
+
+
+// blur -> cuando se sale del campo, cuando se pierde el foco
+// Esta es la forma sencilla de realizarlo
+// txtRFC.addEventListener("blur", function(event){
+//     event.preventDefault();
+//     txtRFC.value = txtRFC.value.toUpperCase();
+// }); // cierre txtRFC
+
+// txtCURP.addEventListener("blur", function(event){
+//     event.preventDefault();
+//     txtCURP.value = txtCURP.value.toUpperCase();
+// }); // cierre txtRFC
+
+txtTelefono.addEventListener("blur",function(event){
+    event.preventDefault();
+    txtTelefono.value =txtTelefono.value.slice(0,10);
+}); // cierre txtTelefono
+
